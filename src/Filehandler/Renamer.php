@@ -8,6 +8,7 @@ use Symfony\Component\Finder\Finder;
 class Renamer
 {
     private const SEPERATOR = '__';
+    private const FILE_SUFFIX = '.';
     private string $path;
     private string $newFileName;
     private bool $deleteOldFiles;
@@ -34,12 +35,20 @@ class Renamer
             return [];
         }
         foreach ($finder as $file) {
+            $replacement = $this->newFileName .
+                self::SEPERATOR .
+                $this->getCurrentDateTime() .
+                self::FILE_SUFFIX .
+                $file->getExtension();
+
             $fileSystem->rename(
                 $file->getRealPath(),
-                $this->path . "/" . $this->newFileName . self::SEPERATOR . $this->getCurrentDateTime(),
+                $this->path . "/" . $replacement,
                 true
             );
-            $files[] = $file->getRealPath();
+            $files[] = [
+                $file->getFilename() => $replacement
+            ];
         }
         return $files;
     }
