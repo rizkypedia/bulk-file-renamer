@@ -12,7 +12,7 @@ RUN apt-get update \
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Add symlink to the executable
-RUN ln -s /var/www/pnv /usr/local/bin/pnv
+RUN ln -s /var/www/bfr /usr/local/bin/bfr
 # Add user
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www

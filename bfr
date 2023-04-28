@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+
+use FileRenamer\Command\FileRenamerCommand;
+use Symfony\Component\Console\Application;
+
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$application = new Application('Bull File Renamer Command', '0.1.0');
+
+$application->add(new FileRenamerCommand());
+
+$application->run();

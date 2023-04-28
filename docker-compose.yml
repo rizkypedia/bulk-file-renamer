@@ -3,11 +3,11 @@ services:
   app:
     build:
       context: .
-    container_name: app
+    container_name: phpbfr
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: app
+      SERVICE_NAME: App
       SERVICE_TAGS: dev
     volumes:
       - ./:/var/www
